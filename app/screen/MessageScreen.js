@@ -21,41 +21,41 @@ const InitialMessages=[
 ];
 
 function MessageScreen(props){
-    const[countList,setMessages]=useState(InitialMessages);
+    const[messages,setMessages]=useState(InitialMessages);
 //delete message from InitialMessages and call the server/delete on backend
     const [refreshing,setRefreshing] = useState(false);
     
 
     const handleDelete = (message) =>{
     setMessages(messages.filter((m)=>m.id!==message.id));
+    };
 
-    }
-    return(
+return(
     <Screen>
         <FlatList
-            data={InitialMessages}
-            keyExtractor={message => message.id.toString()}
-            renderItem={({item})=>
-                (<ListingItems
+            data={messages}
+            keyExtractor={(message) => message.id.toString()}
+            renderItem={({item})=>(
+            <ListingItems
                 subTitle={item.description}
                 image={item.image}
                 onPress={()=>console.log("message selected",item)}
                 renderRightActions={()=>(
                 <ListItemDeleteAction onPress={()=>handleDelete(item)}/>
                 )}
-                />
+             />
             )}
         ItemSeparatorComponent={ListItemsSeparator}
         refreshing={refreshing}
         onRefresh={()=>{
             setMessages([
                 {
-                    id:1,
-                    title:'T1',
+                    id:2,
+                    title:'T2',
                     description:'D1',
                     image:require("../assets/mosh.jpg")
-                }
-            ])
+                },
+            ]);
         }}
     />
     </Screen>

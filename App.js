@@ -8,8 +8,17 @@ import AppButton from './app/components/AppButton';
 import Card from './app/screen/Card';
 import ListingDetails from './app/screen/ListingDetails';
 import MessageScreen from './app/screen/MessageScreen';
+import Screen from './app/components/Screen';
+import Icon from './app/components/Icon';
+import ListingItems from './app/components/ListingItems';
 export default function App(){
-  return <MessageScreen/>
+  return <Screen>
+      <ListingItems title="My title" 
+      
+      ImageComponent={<Icon name="email"/>}
+      />
+  
+  </Screen>;
 }
 
 /*import React from 'react';
